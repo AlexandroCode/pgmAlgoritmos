@@ -163,7 +163,7 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>310</y>
+      <y>370</y>
       <width>203</width>
       <height>94</height>
      </rect>
@@ -175,7 +175,7 @@
         <enum>QFrame::StyledPanel</enum>
        </property>
        <property name="text">
-        <string/>
+        <string>1</string>
        </property>
       </widget>
      </item>
@@ -205,7 +205,7 @@
         <enum>QFrame::StyledPanel</enum>
        </property>
        <property name="text">
-        <string/>
+        <string>0</string>
        </property>
       </widget>
      </item>
@@ -290,14 +290,30 @@
    <widget class="QPushButton" name="btnborrar">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>430</y>
-      <width>113</width>
+      <x>250</x>
+      <y>310</y>
+      <width>151</width>
       <height>32</height>
      </rect>
     </property>
+    <property name="acceptDrops">
+     <bool>true</bool>
+    </property>
     <property name="text">
-     <string>borrar</string>
+     <string>Eliminar instruccion</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>350</y>
+      <width>61</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Suelo</string>
     </property>
    </widget>
    <zorder>scrollArea</zorder>
@@ -307,6 +323,7 @@
    <zorder>label_5</zorder>
    <zorder>label_6</zorder>
    <zorder>btnborrar</zorder>
+   <zorder>label_7</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
