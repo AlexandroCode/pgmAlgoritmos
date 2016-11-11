@@ -1,3 +1,5 @@
+
+
 class instrucciones:
     def __init__(self, listaEntrada, listaSalida, listaSuelo, monito, num, paso):
         self.listaEntrada = listaEntrada
