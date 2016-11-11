@@ -4,6 +4,7 @@ from PyQt5 import uic
 #from PyQt5.QtCore import Qt, QMimeData
 from PyQt5 import QtGui
 from MainCode import *
+
 '''
 class DialogoInicio(QDialog):
     def __init__(self):
@@ -17,7 +18,7 @@ class DialogoInicio(QDialog):
         self.btnCancelar1 =QPushButton(self)
 '''
 
-
+instrucciones.monito=5
 class mainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
@@ -41,6 +42,7 @@ class mainWindow(QMainWindow):
         self.btnRestar.clicked.connect(self.addRestar)
         self.btnborrar.clicked.connect(self.removePaso)
 
+    ''''
     def Iniciar(self):
         self.setWindowTitle("Inicio del juego")
         self.Inicio.etiqueta.setText("Lista de Entrada Aleatoria")
@@ -54,7 +56,7 @@ class mainWindow(QMainWindow):
         self.Inicio.btnAceptar.clicked.connect(self.aceptarDialogo)
         self.Inicio.btnCancelar.clicked.connect(self.cancelarDialogo)
         self.dialogo.exec_()
-
+    '''
 
     def removePaso(self):
         for item in self.listInstrucciones.selectedItems():
@@ -91,11 +93,33 @@ class mainWindow(QMainWindow):
         self.dialogoCopiar()
         if self.irPaso != "":
             self.listInstrucciones.addItem("Copiar a (" + self.irPaso + ")")
+            '''
+            if self.irPaso == '0':
+                self.lblSuelo0.setText(str(instrucciones.monito))
+
+            elif self.irPaso == '1':
+                self.lblSuelo1.setText(str(instrucciones.monito))
+            '''
 
     def addCopiarde(self):
         self.dialogoCopiar()
         if self.irPaso != "":
             self.listInstrucciones.addItem("Copiar de (" + self.irPaso + ")")
+            '''
+            if self.irPaso == '0':
+                instrucciones.monito = int(self.lblSuelo0)
+                self.lblSuelo0.setText("")
+
+            elif int(self.irPaso) == '1':
+                instrucciones.monito = int(self.lblSuelo1)
+                self.lblSuelo1.setText("")
+
+            elif self.monito == '2':
+                instrucciones.monito = int(self.lblSuelo2)
+
+            elif self.monito == '3':
+                instrucciones.monito == int(self.lblSuelo3)
+            '''
 
     def addSumar(self):
         self.dialogoCopiar()
