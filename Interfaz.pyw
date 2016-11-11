@@ -4,7 +4,7 @@ from PyQt5 import uic
 #from PyQt5.QtCore import Qt, QMimeData
 from PyQt5 import QtGui
 from MainCode import *
-
+'''
 class DialogoInicio(QDialog):
     def __init__(self):
         QDialog.__init__(self)
@@ -12,10 +12,10 @@ class DialogoInicio(QDialog):
         self.setWindowTitle("Inicio del juego")
         self.etiqueta1 = QLabel(self)
         self.etiqueta2 = QLabel(self)
-        self.texto = QLineEdit(self)
-        self.btnAceptar = QPushButton(self)
-        self.btnCancelar =QPushButton(self)
-
+        self.texto1 = QLineEdit(self)
+        self.btnAceptar1 = QPushButton(self)
+        self.btnCancelar1 =QPushButton(self)
+'''
 
 
 class mainWindow(QMainWindow):
@@ -24,8 +24,9 @@ class mainWindow(QMainWindow):
         uic.loadUi("interfaz.ui", self)
         self.setWindowTitle("Principal")
         self.dialogo = Dialogo()
+        self.Inicio = Dialogo()
         self.listInstrucciones.setDragDropMode(QAbstractItemView.InternalMove)
-
+        #self.Iniciar()
 
         self.btnEntrada.clicked.connect(self.addEntrada)
         self.btnSalida.clicked.connect(self.addSalida)
@@ -39,6 +40,20 @@ class mainWindow(QMainWindow):
         self.btnSumar.clicked.connect(self.addSumar)
         self.btnRestar.clicked.connect(self.addRestar)
         self.btnborrar.clicked.connect(self.removePaso)
+
+    def Iniciar(self):
+        self.setWindowTitle("Inicio del juego")
+        self.Inicio.etiqueta.setText("Lista de Entrada Aleatoria")
+        #self.Inicio.etiqueta2.setText("¿Lista de Entrada Personalizada?")
+        self.Inicio.etiqueta.move(10, 15)
+        #self.Inicio.etiqueta2.move(100, 15)
+        self.Inicio.btnAceptar.move(30, 65)
+        self.Inicio.btnAceptar.setText("Aceptar")
+        self.Inicio.btnCancelar.move(120, 65)
+        self.Inicio.btnCancelar.setText("Cancelar")
+        self.Inicio.btnAceptar.clicked.connect(self.aceptarDialogo)
+        self.Inicio.btnCancelar.clicked.connect(self.cancelarDialogo)
+        self.dialogo.exec_()
 
 
     def removePaso(self):
@@ -74,23 +89,23 @@ class mainWindow(QMainWindow):
 
     def addCopiara(self):
         self.dialogoCopiar()
-        if self.irPos != "":
+        if self.irPaso != "":
             self.listInstrucciones.addItem("Copiar a (" + self.irPaso + ")")
 
     def addCopiarde(self):
         self.dialogoCopiar()
-        if self.irPos != "":
+        if self.irPaso != "":
             self.listInstrucciones.addItem("Copiar de (" + self.irPaso + ")")
 
     def addSumar(self):
         self.dialogoCopiar()
-        if self.irPos != "":
-            self.listInstrucciones.addItem("Copiar de (" + self.irPaso + ")")
+        if self.irPaso != "":
+            self.listInstrucciones.addItem("Sumar de (" + self.irPaso + ")")
 
     def addRestar(self):
         self.dialogoCopiar()
-        if self.irPos != "":
-            self.listInstrucciones.addItem("Copiar de (" + self.irPaso + ")")
+        if self.irPaso != "":
+            self.listInstrucciones.addItem("Restar de (" + self.irPaso + ")")
 
     def dialogoIra(self):
         self.irPaso = ""
@@ -107,9 +122,9 @@ class mainWindow(QMainWindow):
         self.dialogo.exec_()
 
     def dialogoCopiar(self):
-        self.irPos = ""
+        self.irPaso = ""
         self.dialogo.etiqueta.setText("¿Seleccione posicion en suelo?")
-        self.dialogo.etiqueta.move(30, 15)
+        self.dialogo.etiqueta.move(25, 15)
         self.dialogo.texto.move(60, 40)
         self.dialogo.texto.clear()
         self.dialogo.btnAceptar.move(30, 65)
@@ -143,8 +158,6 @@ class Dialogo(QDialog):
         self.texto = QLineEdit(self)
         self.btnAceptar = QPushButton(self)
         self.btnCancelar =QPushButton(self)
-
-
 
 
 app = QApplication(sys.argv)
