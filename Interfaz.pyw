@@ -38,11 +38,12 @@ class mainWindow(QMainWindow):
         self.btnMenosMenos.clicked.connect(self.addMenosMenos)
         self.btnSumar.clicked.connect(self.addSumar)
         self.btnRestar.clicked.connect(self.addRestar)
-
+        self.btnborrar.clicked.connect(self.removePaso)
 
 
     def removePaso(self):
-        pass
+        for item in self.listInstrucciones.selectedItems():
+            self.listInstrucciones.takeItem(self.listInstrucciones.row(item))
 
     def addEntrada(self):
         self.listInstrucciones.addItem("Entrada")
