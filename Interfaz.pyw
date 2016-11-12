@@ -4,18 +4,12 @@ from PyQt5 import uic
 #from PyQt5.QtCore import Qt, QMimeData
 from PyQt5 import QtGui
 from MainCode import *
-'''
+
 class DialogoInicio(QDialog):
     def __init__(self):
         QDialog.__init__(self)
-        self.resize(350, 200)
-        self.setWindowTitle("Inicio del juego")
-        self.etiqueta1 = QLabel(self)
-        self.etiqueta2 = QLabel(self)
-        self.texto1 = QLineEdit(self)
-        self.btnAceptar1 = QPushButton(self)
-        self.btnCancelar1 =QPushButton(self)
-'''
+        uic.loadUi("Inicio.ui", self)
+
 
 
 class mainWindow(QMainWindow):
@@ -24,9 +18,9 @@ class mainWindow(QMainWindow):
         uic.loadUi("interfaz.ui", self)
         self.setWindowTitle("Principal")
         self.dialogo = Dialogo()
-        self.Inicio = Dialogo()
+        self.Inicio = DialogoInicio()
         self.listInstrucciones.setDragDropMode(QAbstractItemView.InternalMove)
-        #self.Iniciar()
+        self.btnstart.clicked.connect(self.Iniciar)
 
         self.btnEntrada.clicked.connect(self.addEntrada)
         self.btnSalida.clicked.connect(self.addSalida)
@@ -42,18 +36,8 @@ class mainWindow(QMainWindow):
         self.btnborrar.clicked.connect(self.removePaso)
 
     def Iniciar(self):
-        self.setWindowTitle("Inicio del juego")
-        self.Inicio.etiqueta.setText("Lista de Entrada Aleatoria")
-        #self.Inicio.etiqueta2.setText("¿Lista de Entrada Personalizada?")
-        self.Inicio.etiqueta.move(10, 15)
-        #self.Inicio.etiqueta2.move(100, 15)
-        self.Inicio.btnAceptar.move(30, 65)
-        self.Inicio.btnAceptar.setText("Aceptar")
-        self.Inicio.btnCancelar.move(120, 65)
-        self.Inicio.btnCancelar.setText("Cancelar")
-        self.Inicio.btnAceptar.clicked.connect(self.aceptarDialogo)
-        self.Inicio.btnCancelar.clicked.connect(self.cancelarDialogo)
-        self.dialogo.exec_()
+        self.Inicio.open()
+        uic.loadUi("interfaz.ui", self)
 
 
     def removePaso(self):
