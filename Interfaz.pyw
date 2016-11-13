@@ -263,7 +263,7 @@ class mainWindow(QMainWindow):
 
     def buildInstrucciones(self):
         #os.rename("solucion.py","solucion.txt")
-
+        self.listInstrucciones.clear()
         with open("solucion.py") as lineas:
             for linea in lineas:
                 if "entrada" in linea:
