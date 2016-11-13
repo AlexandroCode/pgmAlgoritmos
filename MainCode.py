@@ -1,6 +1,8 @@
 
 
+
 class instrucciones:
+
     def __init__(self, listaEntrada, listaSalida, listaSuelo, monito, num, paso):
         self.listaEntrada = listaEntrada
         self.listaSalida = listaSalida
@@ -8,6 +10,7 @@ class instrucciones:
         self.monito = monito
         self.num = num
         self.paso = paso
+
     '''
     def algoritmo(self, listaPasos):
         diccionario = {}

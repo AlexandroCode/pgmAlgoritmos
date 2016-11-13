@@ -1,6 +1,7 @@
 from MainCode import *
 
-p1 = instrucciones([-3, -6, -2, 8], [], [0, 0, 0, 1], 0, 0, 1) #constructor
+
+p1 = instrucciones([2, 5, 1, 0, -3, -2], [], [0, 0, 0, 1], 0, 0, 1) #constructor
 
 while (len(p1.listaEntrada) != 0 or p1.monito > 0):
 
@@ -39,3 +40,4 @@ while (len(p1.listaEntrada) != 0 or p1.monito > 0):
 
     if p1.paso == 12:
         p1.irA(1)
+

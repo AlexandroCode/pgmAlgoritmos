@@ -35,6 +35,9 @@
     </item>
     <item>
      <widget class="QPushButton" name="btnAdd">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Agregar</string>
       </property>
@@ -56,7 +59,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QListWidget" name="listWidget">
+  <widget class="QListWidget" name="listNumInicio">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -66,7 +69,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QWidget" name="verticalLayoutWidget_2">
+  <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -75,22 +78,38 @@
      <height>80</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_2">
-    <item>
-     <widget class="QRadioButton" name="rbtnLlenar">
-      <property name="text">
-       <string>Llenar Lista</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QRadioButton" name="rbtnAleatorio">
-      <property name="text">
-       <string>Lista Aleatoria</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
+   <property name="title">
+    <string>Opciones</string>
+   </property>
+   <widget class="QRadioButton" name="rbtnAleatoria">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Lista Aleatoria</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rbtnllenar">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>102</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Crear Lista</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
