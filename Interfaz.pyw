@@ -122,7 +122,7 @@ class mainWindow(QMainWindow):
 
     def removePaso(self):
         resp = QMessageBox.warning(self, "Eliminar", "Eliminar Instruccion", QMessageBox.Abort, QMessageBox.Apply)
-        if resp == QMessageBox.Ok:
+        if resp == QMessageBox.Apply:
             for item in self.listInstrucciones.selectedItems():
                 self.listInstrucciones.takeItem(self.listInstrucciones.row(item))
         else:
