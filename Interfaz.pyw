@@ -1,8 +1,9 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QLabel, QLineEdit, QAbstractItemView, QPushButton, QListWidget, QListWidgetItem
+from PyQt5.QtWidgets import *
 from PyQt5 import uic
 from PyQt5.QtCore import Qt, QMimeData
 from PyQt5.QtGui import *
+from PyQt5.QtCore import *
 from MainCode import *
 import random
 import subprocess
@@ -35,7 +36,6 @@ class mainWindow(QMainWindow):
         self.execute = DialogoEjecutar()
         self.listInstrucciones.setDragDropMode(QAbstractItemView.InternalMove)
         self.btnstart.clicked.connect(self.Iniciar)
-
         self.btnEntrada.clicked.connect(self.addEntrada)
         self.btnSalida.clicked.connect(self.addSalida)
         self.btnIra.clicked.connect(self.addIra)
@@ -52,6 +52,11 @@ class mainWindow(QMainWindow):
         self.btnEjecutar.clicked.connect(self.getAlgoritmo)
         self.btnCargar.clicked.connect(self.buildInstrucciones)
         self.btnExeShell.clicked.connect(lambda:self.run('solucion.py'))
+        self.btnSalir.clicked.connect(self.cerrarMain)
+        self.btnGuardar.clicked.connect(self.saveAlgoritmo)
+
+    def cerrarMain(self):
+        self.close()
 
     def run(self, path):
         subprocess.call(['pythonw',path])
@@ -67,14 +72,16 @@ class mainWindow(QMainWindow):
             self.Inicio.listNumInicio.addItem(str(numero))
 
     def radioValor(self):
-
+        self.Inicio.btnContinuar.setFocus()
         if self.Inicio.rbtnllenar.isChecked():
             self.Inicio.btnAdd.setEnabled(True)
-            self.Inicio.listPasosInicio.clear()
+            self.Inicio.listNumInicio.clear()
+            self.Inicio.btnAdd.setFocus()
         else:
             self.Inicio.btnAdd.setEnabled(False)
+            self.Inicio.btnContinuar.setFocus()
             for numero in self.myrandoms:
-                self.Inicio.listPasosInicio.addItem(str(numero))
+                self.Inicio.listNumInicio.addItem(str(numero))
 
     def cancelarInicio(self):
         self.Inicio.listNumInicio.clear()
@@ -103,7 +110,6 @@ class mainWindow(QMainWindow):
         self.execute.listPasosExe.clear()
         self.execute.close()
 
-
     def aPrincipal(self):
         instrucciones.listaEntrada = self.myrandoms
         self.Inicio.listNumInicio.clear()
@@ -113,7 +119,6 @@ class mainWindow(QMainWindow):
     def removePaso(self):
         for item in self.listInstrucciones.selectedItems():
             self.listInstrucciones.takeItem(self.listInstrucciones.row(item))
-
 
     def addEntrada(self):
         #for index in range(self.listInstrucciones.count()):
@@ -261,8 +266,36 @@ class mainWindow(QMainWindow):
         #print(index)
         self.ventanaEjecutar()
 
+    def saveAlgoritmo(self):
+
+        instrucciones.listaEntrada = self.myrandoms
+        file = open("solucion.py", "w+")
+        file.write('from MainCode import * \np1 = instrucciones(' + str(
+            instrucciones.listaEntrada) + ', [], [0, 0, 0, 1], 0, 0, 0)\n')
+        file.write('while ((len(p1.listaEntrada) != 0) or p1.monito > 0):\n')
+        for index in range(self.listInstrucciones.count()):
+            items.append(self.listInstrucciones.item(index))
+            label = [i.text() for i in items]
+            instruccion = label[0]
+            contenido = file.read()
+            finalArchivo = file.tell()
+            file.write('    if p1.paso == ' + str(index) + ':\n')
+            file.write('        p1.' + instruccion + '\n')
+            file.seek(finalArchivo)
+            items = []
+        # os.rename("solucion.txt", "solucion.py")
+        file.close()
+
     def buildInstrucciones(self):
         #os.rename("solucion.py","solucion.txt")
+        '''
+        dlg = QFileDialog()
+        dlg.setFileMode(QFileDialog.AnyFile)
+        dlg.setFilter("Text files (*.txt)")
+        self.filenames = QStringListModel()
+        if dlg.exec_():
+            self.filenames = dlg.selectedFiles()
+        '''
         self.listInstrucciones.clear()
         with open("solucion.py") as lineas:
             for linea in lineas:

@@ -45,6 +45,12 @@
     </item>
     <item>
      <widget class="QPushButton" name="btnContinuar">
+      <property name="focusPolicy">
+       <enum>Qt::TabFocus</enum>
+      </property>
+      <property name="toolTip">
+       <string>Volver a principal</string>
+      </property>
       <property name="text">
        <string>Continuar</string>
       </property>
@@ -52,6 +58,9 @@
     </item>
     <item>
      <widget class="QPushButton" name="btnSalir">
+      <property name="toolTip">
+       <string>Cerrar ventana</string>
+      </property>
       <property name="text">
        <string>Salir</string>
       </property>
@@ -90,6 +99,9 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>Crea una lista aleatoria de numeros</string>
+    </property>
     <property name="text">
      <string>Lista Aleatoria</string>
     </property>
@@ -105,6 +117,9 @@
       <width>102</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Ingrese numeros a la lista</string>
     </property>
     <property name="text">
      <string>Crear Lista</string>

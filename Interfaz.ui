@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>660</width>
+    <width>572</width>
     <height>573</height>
    </rect>
   </property>
@@ -20,10 +20,10 @@
    <widget class="QScrollArea" name="scrollArea">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>60</y>
-      <width>211</width>
-      <height>401</height>
+      <x>390</x>
+      <y>40</y>
+      <width>171</width>
+      <height>331</height>
      </rect>
     </property>
     <property name="cursor" stdset="0">
@@ -40,17 +40,17 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>209</width>
-       <height>399</height>
+       <width>169</width>
+       <height>329</height>
       </rect>
      </property>
      <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>0</x>
         <y>10</y>
-        <width>191</width>
-        <height>381</height>
+        <width>161</width>
+        <height>311</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -58,6 +58,9 @@
         <widget class="QPushButton" name="btnEntrada">
          <property name="cursor">
           <cursorShape>ClosedHandCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string>Toma el primer numero de la lista </string>
          </property>
          <property name="text">
           <string>Entrada ( )</string>
@@ -162,23 +165,17 @@
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>370</y>
-      <width>203</width>
-      <height>94</height>
+      <x>200</x>
+      <y>140</y>
+      <width>171</width>
+      <height>141</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="3" column="1">
-      <widget class="QLabel" name="lblSuelo3">
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="lineWidth">
-        <number>3</number>
-       </property>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>1</string>
+        <string>2</string>
        </property>
       </widget>
      </item>
@@ -195,10 +192,36 @@
        </property>
       </widget>
      </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="text">
+        <string>0</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="1">
       <widget class="QLabel" name="label_2">
        <property name="layoutDirection">
         <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLabel" name="lblSuelo3">
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="lineWidth">
+        <number>3</number>
        </property>
        <property name="text">
         <string>1</string>
@@ -218,6 +241,13 @@
        </property>
       </widget>
      </item>
+     <item row="2" column="1">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>3</string>
+       </property>
+      </widget>
+     </item>
      <item row="1" column="1">
       <widget class="QLabel" name="lblSuelo1">
        <property name="frameShape">
@@ -231,95 +261,75 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>2</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QLabel" name="label_4">
-       <property name="text">
-        <string>3</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="layoutDirection">
-        <enum>Qt::LeftToRight</enum>
-       </property>
-       <property name="text">
-        <string>0</string>
-       </property>
-       <property name="textFormat">
-        <enum>Qt::AutoText</enum>
-       </property>
-      </widget>
-     </item>
     </layout>
    </widget>
    <widget class="QListWidget" name="listInstrucciones">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>60</y>
-      <width>181</width>
-      <height>401</height>
+      <x>10</x>
+      <y>40</y>
+      <width>171</width>
+      <height>331</height>
      </rect>
     </property>
     <property name="acceptDrops">
      <bool>true</bool>
+    </property>
+    <property name="toolTip">
+     <string>Lista de instrucciones a ejecutarse</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>30</y>
-      <width>91</width>
+      <x>420</x>
+      <y>20</y>
+      <width>111</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Instrucciones</string>
+     <string>INSTRUCCIONES</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>30</y>
-      <width>71</width>
-      <height>16</height>
+      <x>60</x>
+      <y>20</y>
+      <width>81</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>A Ejecutar</string>
+     <string>A EJECUTAR</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btnborrar">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>310</y>
-      <width>151</width>
-      <height>32</height>
+      <x>190</x>
+      <y>300</y>
+      <width>191</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="acceptDrops">
      <bool>true</bool>
     </property>
+    <property name="toolTip">
+     <string>Elimina la instruccion seleccionada en la lista</string>
+    </property>
     <property name="text">
-     <string>Eliminar instruccion</string>
+     <string>Eliminar 
+instruccion</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>350</y>
+      <x>260</x>
+      <y>120</y>
       <width>61</width>
       <height>16</height>
      </rect>
@@ -331,11 +341,14 @@
    <widget class="QPushButton" name="btnstart">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>10</y>
-      <width>113</width>
-      <height>32</height>
+      <x>190</x>
+      <y>40</y>
+      <width>191</width>
+      <height>71</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Llenar una lista de numeros</string>
     </property>
     <property name="text">
      <string>INICIAR</string>
@@ -344,11 +357,14 @@
    <widget class="QPushButton" name="btnEjecutar">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>460</y>
-      <width>113</width>
-      <height>32</height>
+      <x>190</x>
+      <y>380</y>
+      <width>191</width>
+      <height>71</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Ejecuta visualmente el algoritmo</string>
     </property>
     <property name="text">
      <string>Ejecutar</string>
@@ -357,11 +373,14 @@
    <widget class="QPushButton" name="btnCargar">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>460</y>
-      <width>113</width>
-      <height>32</height>
+      <x>0</x>
+      <y>450</y>
+      <width>191</width>
+      <height>71</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Carga en la lista las instrucciones de un archivo</string>
     </property>
     <property name="text">
      <string>Cargar</string>
@@ -370,14 +389,46 @@
    <widget class="QPushButton" name="btnExeShell">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>490</y>
-      <width>113</width>
-      <height>32</height>
+      <x>190</x>
+      <y>450</y>
+      <width>191</width>
+      <height>71</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Ejecuta en linea de comandos</string>
     </property>
     <property name="text">
      <string>Ejecutar Shell</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnGuardar">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>380</y>
+      <width>191</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Guarda un archivo con la lista de instrucciones</string>
+    </property>
+    <property name="text">
+     <string>Guardar</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnSalir">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>450</y>
+      <width>191</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>SALIR</string>
     </property>
    </widget>
   </widget>
@@ -386,7 +437,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>660</width>
+     <width>572</width>
      <height>22</height>
     </rect>
    </property>
