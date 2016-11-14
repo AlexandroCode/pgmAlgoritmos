@@ -56,7 +56,11 @@ class mainWindow(QMainWindow):
         self.btnGuardar.clicked.connect(self.saveAlgoritmo)
 
     def cerrarMain(self):
-        self.close()
+        resp =  QMessageBox.question(self, "Cerrar", "Cerrar aplicacion", QMessageBox.Ok, QMessageBox.Cancel)
+        if resp == QMessageBox.Ok:
+            self.close()
+        else:
+            return
 
     def run(self, path):
         subprocess.call(['pythonw',path])
@@ -117,8 +121,13 @@ class mainWindow(QMainWindow):
         print (instrucciones.listaEntrada)
 
     def removePaso(self):
-        for item in self.listInstrucciones.selectedItems():
-            self.listInstrucciones.takeItem(self.listInstrucciones.row(item))
+        resp = QMessageBox.warning(self, "Eliminar", "Eliminar Instruccion", QMessageBox.Abort, QMessageBox.Apply)
+        if resp == QMessageBox.Ok:
+            for item in self.listInstrucciones.selectedItems():
+                self.listInstrucciones.takeItem(self.listInstrucciones.row(item))
+        else:
+            return
+
 
     def addEntrada(self):
         #for index in range(self.listInstrucciones.count()):
@@ -267,24 +276,27 @@ class mainWindow(QMainWindow):
         self.ventanaEjecutar()
 
     def saveAlgoritmo(self):
-
-        instrucciones.listaEntrada = self.myrandoms
-        file = open("solucion.py", "w+")
-        file.write('from MainCode import * \np1 = instrucciones(' + str(
-            instrucciones.listaEntrada) + ', [], [0, 0, 0, 1], 0, 0, 0)\n')
-        file.write('while ((len(p1.listaEntrada) != 0) or p1.monito > 0):\n')
-        for index in range(self.listInstrucciones.count()):
-            items.append(self.listInstrucciones.item(index))
-            label = [i.text() for i in items]
-            instruccion = label[0]
-            contenido = file.read()
-            finalArchivo = file.tell()
-            file.write('    if p1.paso == ' + str(index) + ':\n')
-            file.write('        p1.' + instruccion + '\n')
-            file.seek(finalArchivo)
-            items = []
-        # os.rename("solucion.txt", "solucion.py")
-        file.close()
+        resp =  QMessageBox.question(self, "Guardar", "Guardar este algoritmo", QMessageBox.Save, QMessageBox.Discard)
+        if resp == QMessageBox.Save:
+            instrucciones.listaEntrada = self.myrandoms
+            file = open("solucion.py", "w+")
+            file.write('from MainCode import * \np1 = instrucciones(' + str(
+                instrucciones.listaEntrada) + ', [], [0, 0, 0, 1], 0, 0, 0)\n')
+            file.write('while ((len(p1.listaEntrada) != 0) or p1.monito > 0):\n')
+            for index in range(self.listInstrucciones.count()):
+                items.append(self.listInstrucciones.item(index))
+                label = [i.text() for i in items]
+                instruccion = label[0]
+                contenido = file.read()
+                finalArchivo = file.tell()
+                file.write('    if p1.paso == ' + str(index) + ':\n')
+                file.write('        p1.' + instruccion + '\n')
+                file.seek(finalArchivo)
+                items = []
+            # os.rename("solucion.txt", "solucion.py")
+            file.close()
+        else:
+            return
 
     def buildInstrucciones(self):
         #os.rename("solucion.py","solucion.txt")
