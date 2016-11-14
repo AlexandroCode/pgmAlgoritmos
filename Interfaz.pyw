@@ -31,6 +31,9 @@ class mainWindow(QMainWindow):
         QMainWindow.__init__(self)
         uic.loadUi("interfaz.ui", self)
         self.setWindowTitle("Principal")
+        self.setMaximumSize(570,550)
+        self.setMinimumSize(570,550)
+        #self._want_to_close = False
         self.dialogo = Dialogo()
         self.Inicio = DialogoInicio()
         self.execute = DialogoEjecutar()
@@ -54,6 +57,13 @@ class mainWindow(QMainWindow):
         self.btnExeShell.clicked.connect(lambda:self.run('solucion.py'))
         self.btnSalir.clicked.connect(self.cerrarMain)
         self.btnGuardar.clicked.connect(self.saveAlgoritmo)
+    '''
+    def closeEvent(self, eClose):
+        if self._want_to_close:
+            QMainWindow.__init__(self).closeEvent(eClose)
+        else:
+            eClose.ignore()
+    '''
 
     def cerrarMain(self):
         resp =  QMessageBox.question(self, "Cerrar", "Cerrar aplicacion", QMessageBox.Ok, QMessageBox.Cancel)
